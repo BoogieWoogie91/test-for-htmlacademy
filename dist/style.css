@@ -48,6 +48,7 @@
   margin-bottom: 15px;
   position: relative;
   transition: 300ms ease-in-out;
+  z-index: 1;
 }
 
 .newsCard.transitioned {
@@ -104,8 +105,78 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: darkblue;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  color: #fff;
+  outline: none;
+  transition: 300ms ease-in-out;
+}
+
+.sideBarSwitch.active {
+  opacity: 1;
+  transition: 300ms ease-in-out;
+  z-index: 999;
+}
+
+.sideBar {
+  width: 30%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(0,0,0,0.92941);
+  z-index: -1;
+  transform: translateX(100%);
+  transition: 700ms ease-in-out;
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+.sideBar.active {
+  z-index: 998;
+  transform: translateX(0%);
+  transition: 700ms ease-in-out;
+}
+
+.sideCard {
+  transform: translateX(120%);
+}
+
+.sideCard.active {
+  transform: translateX(0%);
+}
+
+.sideCard a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.sideCard img {
+  height: 50px;
+  min-width: 100px;
+  margin-right: 10px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.closeSideBar {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: darkblue;
+  background: red;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
 }
