@@ -48,11 +48,14 @@ function newsDeleter() {
   }
 }
 
-function sideBarCloser(starterBtn, sideBar) {
+function sideBarCloser(starterBtn, sideBar, sideCard) {
   const closeBtn = document.querySelector('.closeSideBar');
   closeBtn.addEventListener('click', () => {
     sideBar.classList.toggle('active');
     starterBtn.classList.toggle('active');
+    sideCard.forEach((element) => {
+      element.classList.toggle('active');
+    });
   });
 }
 
@@ -74,20 +77,18 @@ function sideBarStarter(fetchResult) {
 
     sideBar.insertAdjacentHTML('beforeend', template);
   });
-
+  const sideCard = document.querySelectorAll('.sideCard');
   starterBtn.addEventListener('click', () => {
-    const sideCard = document.querySelectorAll('.sideCard');
     sideBar.classList.add('active');
     starterBtn.classList.remove('active');
-    console.log(sideCard);
     setTimeout(() => {
       sideCard.forEach((element, index) => {
-        element.style.transition = `${100 * index}ms`;
+        element.style.transition = `${300 * (index + 1)}ms`;
         element.classList.toggle('active');
       });
     }, 700);
   });
-  sideBarCloser(starterBtn, sideBar);
+  sideBarCloser(starterBtn, sideBar, sideCard);
 }
 
 function cardCreator(fetchResult) {
